@@ -8,12 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>航电维修工具库 · 数据分离版</title>
     <style>
-        /* 完整保留原有样式，无修改 */
+        /* 全局样式重置 */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
+        /* 主体样式 */
         body {
             background: #eef2f5;
             font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
@@ -22,6 +24,8 @@
             display: flex;
             justify-content: center;
         }
+
+        /* 应用容器 */
         .app-container {
             max-width: 1800px;
             width: 100%;
@@ -33,6 +37,8 @@
             height: calc(100vh - 40px);
             overflow: hidden;
         }
+
+        /* 头部样式 */
         header {
             padding: 10px 20px;
             background: white;
@@ -42,16 +48,20 @@
             align-items: center;
             justify-content: space-between;
         }
+
         h1 {
             font-size: 1.2rem;
             font-weight: 600;
             color: #0b2f4e;
         }
+
+        /* 按钮组 */
         .btn-group {
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
         }
+
         button {
             background: white;
             border: 1px solid #cbd6e4;
@@ -66,18 +76,23 @@
             align-items: center;
             gap: 3px;
         }
+
         button:hover {
             background: #f0f4fa;
             border-color: #9bb1c9;
         }
+
         button.primary {
             background: #1e3b5a;
             border-color: #1e3b5a;
             color: white;
         }
+
         button.primary:hover {
             background: #0f2a3f;
         }
+
+        /* 主布局 */
         .main-layout {
             display: flex;
             flex: 1;
@@ -85,6 +100,8 @@
             padding: 12px 12px 12px 16px;
             gap: 12px;
         }
+
+        /* 项目面板 */
         .project-panel {
             width: 26%;
             min-width: 200px;
@@ -95,6 +112,7 @@
             flex-direction: column;
             border: 1px solid #e2eaf2;
         }
+
         .search-box {
             width: 100%;
             padding: 8px 12px;
@@ -104,12 +122,14 @@
             background: white;
             outline: none;
         }
+
         .filter-row {
             display: flex;
             gap: 4px;
             margin: 10px 0 8px;
             flex-wrap: wrap;
         }
+
         .filter-chip {
             background: white;
             border: 1px solid #cbdae9;
@@ -121,16 +141,19 @@
             cursor: pointer;
             transition: 0.1s;
         }
+
         .filter-chip.active {
             background: #1e3b5a;
             color: white;
             border-color: #1e3b5a;
         }
+
         .project-list {
             flex: 1;
             overflow-y: auto;
             margin-top: 4px;
         }
+
         .project-item {
             background: white;
             padding: 8px 10px;
@@ -140,15 +163,18 @@
             cursor: pointer;
             transition: 0.1s;
         }
+
         .project-item:hover {
             background: #ecf3fc;
             border-color: #b4cae2;
         }
+
         .project-item.selected {
             background: #dde9f7;
             border-left: 4px solid #1e3b5a;
             border-color: #1e3b5a #d0deed #d0deed #d0deed;
         }
+
         .project-name {
             font-weight: 600;
             font-size: 0.85rem;
@@ -156,6 +182,7 @@
             margin-bottom: 3px;
             word-break: break-word;
         }
+
         .project-model {
             font-size: 0.65rem;
             color: #567e9c;
@@ -164,6 +191,8 @@
             padding: 2px 6px;
             border-radius: 40px;
         }
+
+        /* 工具面板 */
         .tools-panel {
             width: 74%;
             display: flex;
@@ -171,15 +200,18 @@
             overflow: hidden;
             flex: 1;
         }
+
         .tools-header {
             margin-bottom: 8px;
         }
+
         .tools-header h2 {
             font-size: 1.1rem;
             font-weight: 600;
             color: #0b2f4e;
             word-break: break-word;
         }
+
         .cards-container {
             display: flex;
             gap: 10px;
@@ -188,6 +220,7 @@
             overflow: visible;
             margin-bottom: 8px;
         }
+
         .tool-card {
             flex: 1 1 0;
             min-width: 0;
@@ -200,6 +233,7 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.02);
         }
+
         .card-header {
             padding: 12px 12px 6px;
             font-weight: 600;
@@ -207,6 +241,7 @@
             background: #f9fcff;
             border-bottom: 1px solid #e2eaf2;
         }
+
         .card-header span {
             background: #e1ebf5;
             padding: 2px 8px;
@@ -215,12 +250,14 @@
             margin-left: 6px;
             color: #1e3b5a;
         }
+
         .tool-list {
             flex: 1;
             overflow-y: auto;
             padding: 6px 8px 10px;
             min-height: 0;
         }
+
         .tool-row {
             display: flex;
             align-items: center;
@@ -229,10 +266,12 @@
             border-bottom: 1px solid #edf3f9;
             gap: 4px;
         }
+
         .tool-info {
             flex: 1;
             min-width: 0;
         }
+
         .tool-name {
             font-weight: 600;
             color: #1a3857;
@@ -240,6 +279,7 @@
             word-break: break-word;
             line-height: 1.2;
         }
+
         .tool-spec {
             font-size: 0.65rem;
             color: #6b8aac;
@@ -247,6 +287,7 @@
             word-break: break-word;
             white-space: normal;
         }
+
         .tool-qty {
             background: #e5effa;
             padding: 2px 6px;
@@ -256,15 +297,18 @@
             color: #1e3b5a;
             white-space: nowrap;
         }
+
         .tool-actions {
             display: flex;
             gap: 3px;
             opacity: 0;
             transition: opacity 0.1s;
         }
+
         .edit-mode-active .tool-actions {
             opacity: 1;
         }
+
         .tool-actions button {
             background: none;
             border: none;
@@ -273,12 +317,15 @@
             padding: 2px;
             color: #7e96b0;
         }
+
         .tool-actions button:hover {
             color: #1e3b5a;
         }
+
         .delete-tool:hover {
             color: #c00 !important;
         }
+
         .empty-tools {
             color: #a0b8cf;
             text-align: center;
@@ -286,6 +333,8 @@
             font-style: italic;
             font-size: 0.85rem;
         }
+
+        /* 底部栏 */
         .bottom-bar {
             padding: 8px 16px;
             background: #f8fbfe;
@@ -296,17 +345,20 @@
             justify-content: space-between;
             gap: 8px;
         }
+
         .bottom-left {
             display: flex;
             align-items: center;
             gap: 8px;
         }
+
         .bottom-right {
             display: flex;
             align-items: center;
             gap: 8px;
             margin-left: auto;
         }
+
         .project-image-icon {
             width: 30px;
             height: 30px;
@@ -319,33 +371,40 @@
             cursor: pointer;
             overflow: hidden;
         }
+
         .project-image-icon img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
+
         .project-image-icon span {
             font-size: 1rem;
             color: #6b8aac;
         }
+
         .bottom-center {
             display: flex;
             gap: 8px;
             align-items: center;
             margin-right: auto;
         }
+
         .edit-mode-toggle {
             background: #e9f0f8;
             border-color: #9bb1c9;
         }
+
         .edit-mode-toggle.active {
             background: #1e3b5a;
             color: white;
             border-color: #1e3b5a;
         }
+
         .file-import {
             position: relative;
         }
+
         .file-import input {
             position: absolute;
             left: 0;
@@ -355,18 +414,25 @@
             height: 100%;
             cursor: pointer;
         }
+
+        /* 图片模态框 */
         .image-modal {
             display: none;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0,0,0,0.4);
             align-items: center;
             justify-content: center;
             z-index: 2000;
         }
+
         .image-modal.active {
             display: flex;
         }
+
         .image-modal-content {
             background: white;
             border-radius: 28px;
@@ -375,11 +441,13 @@
             width: 90%;
             box-shadow: 0 30px 50px rgba(0,0,0,0.3);
         }
+
         .image-modal-content h3 {
             margin-bottom: 16px;
             color: #0b2f4e;
             font-size: 1rem;
         }
+
         .image-preview-large {
             width: 140px;
             height: 140px;
@@ -392,29 +460,38 @@
             justify-content: center;
             overflow: hidden;
         }
+
         .image-preview-large img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
+
         .image-modal-actions {
             display: flex;
             gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
         }
+
+        /* 通用模态框 */
         .modal {
             display: none;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0,0,0,0.4);
             align-items: center;
             justify-content: center;
             z-index: 1000;
         }
+
         .modal.active {
             display: flex;
         }
+
         .modal-content {
             background: white;
             border-radius: 28px;
@@ -423,14 +500,17 @@
             width: 90%;
             box-shadow: 0 30px 50px rgba(0,0,0,0.3);
         }
+
         .modal-content h3 {
             margin-bottom: 16px;
             color: #0b2f4e;
             font-size: 1.1rem;
         }
+
         .form-group {
             margin-bottom: 14px;
         }
+
         .form-group label {
             display: block;
             font-weight: 500;
@@ -438,7 +518,9 @@
             color: #1f4465;
             font-size: 0.8rem;
         }
-        .form-group input, .form-group select {
+
+        .form-group input,
+        .form-group select {
             width: 100%;
             padding: 8px 12px;
             border: 1px solid #cbdae9;
@@ -446,599 +528,1083 @@
             font-size: 0.85rem;
             outline: none;
         }
+
         .modal-actions {
             display: flex;
             gap: 12px;
             justify-content: flex-end;
             margin-top: 20px;
         }
+
+        /* 响应式适配 */
         @media (max-width: 900px) {
-            .main-layout { flex-direction: column; }
-            .project-panel, .tools-panel { width: 100%; }
-            .cards-container { flex-direction: column; }
-            .tool-card { max-height: 300px; }
-            .app-container { height: auto; min-height: 100vh; }
-            .bottom-bar { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            .bottom-left, .bottom-center, .bottom-right { margin: 0; }
+            .main-layout {
+                flex-direction: column;
+            }
+
+            .project-panel,
+            .tools-panel {
+                width: 100%;
+            }
+
+            .cards-container {
+                flex-direction: column;
+            }
+
+            .tool-card {
+                max-height: 300px;
+            }
+
+            .app-container {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .bottom-bar {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .bottom-left,
+            .bottom-center,
+            .bottom-right {
+                margin: 0;
+            }
         }
     </style>
 </head>
 <body>
-<div class="app-container" id="app">
-    <header>
-        <h1>🔧 维修工具库 · 数据分离版</h1>
-        <div class="btn-group">
-            <button class="primary" id="addProjectBtn">➕ 新增项目</button>
-            <button id="exportBtn">📤 导出JSON备份</button>
-            <button id="exportDataJsBtn">📥 导出data.js</button> <!-- 新增：导出data.js按钮 -->
-            <div class="file-import">
-                <button>📥 导入JSON</button>
-                <input type="file" id="importFile" accept="application/json">
+    <div class="app-container" id="app">
+        <!-- 头部区域 -->
+        <header>
+            <h1>🔧 维修工具库 · 数据分离版</h1>
+            <div class="btn-group">
+                <button class="primary" id="addProjectBtn">➕ 新增项目</button>
+                <button id="exportJsonBtn">📤 导出JSON备份</button>
+                <button id="exportDataJsBtn">📥 导出data.js</button>
+                <div class="file-import">
+                    <button>📥 导入JSON</button>
+                    <input type="file" id="importFile" accept="application/json">
+                </div>
             </div>
-        </div>
-    </header>
-    <div class="main-layout">
-        <div class="project-panel">
-            <input type="text" class="search-box" id="searchInput" placeholder="🔍 搜索...">
-            <div class="filter-row" id="modelFilters">
-                <span class="filter-chip active" data-model="全部">全部</span>
-                <span class="filter-chip" data-model="737">737</span>
-                <span class="filter-chip" data-model="737/MAX">737/MAX</span>
-                <span class="filter-chip" data-model="MAX">MAX</span>
-                <span class="filter-chip" data-model="787">787</span>
-            </div>
-            <div class="project-list" id="projectList"></div>
-        </div>
-        <div class="tools-panel">
-            <div class="tools-header">
-                <h2 id="selectedProjectName">请选择一个项目</h2>
-            </div>
-            <div class="cards-container" id="toolCards"></div>
-        </div>
-    </div>
-    <div class="bottom-bar">
-        <div class="bottom-left">
-            <button id="saveLocalBtn">💾 保存到浏览器</button>
-            <button id="resetBtn">🔄 重置</button>
-        </div>
-        <div class="bottom-center">
-            <button id="editModeToggle" class="edit-mode-toggle">✏️ 编辑模式</button>
-            <button id="addToolBtn" disabled>➕ 新增工具</button>
-        </div>
-        <div class="bottom-right">
-            <div class="project-image-icon" id="imageIcon" title="项目图片">
-                <span id="iconPlaceholder">🖼️</span>
-                <img id="iconImg" src="" style="display: none;">
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 图片管理模态框 -->
-<div class="image-modal" id="imageModal">
-    <div class="image-modal-content">
-        <h3>项目图片</h3>
-        <div class="image-preview-large" id="largeImagePreview">
-            <img src="" alt="预览" id="largeImg">
-        </div>
-        <div class="image-modal-actions">
-            <button id="uploadImageBtn">📎 上传</button>
-            <button id="removeImageBtn">❌ 移除</button>
-            <button id="closeImageModal">关闭</button>
-            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-        </div>
-    </div>
-</div>
-<!-- 编辑/新增工具模态框 -->
-<div class="modal" id="toolModal">
-    <div class="modal-content">
-        <h3 id="modalTitle">编辑工具</h3>
-        <form id="toolForm" onsubmit="return false;">
-            <input type="hidden" id="toolId">
-            <div class="form-group">
-                <label>工具名称 *</label>
-                <input type="text" id="toolName" required>
-            </div>
-            <div class="form-group">
-                <label>类型</label>
-                <select id="toolType">
-                    <option value="基础工具">基础工具</option>
-                    <option value="化工品">化工品</option>
-                    <option value="专用工具">专用工具</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>规格/件号</label>
-                <input type="text" id="toolSpec" placeholder="例如 5/16 或 M1B">
-            </div>
-            <div class="form-group">
-                <label>数量</label>
-                <input type="text" id="toolQty" value="1">
-            </div>
-            <div class="modal-actions">
-                <button type="button" id="cancelModal">取消</button>
-                <button type="submit" class="primary" id="saveTool">保存</button>
-            </div>
-        </form>
-    </div>
-</div>
-<!-- 新增/编辑项目模态框 -->
-<div class="modal" id="projectModal">
-    <div class="modal-content">
-        <h3 id="projectModalTitle">新增项目</h3>
-        <form id="projectForm" onsubmit="return false;">
-            <div class="form-group">
-                <label>工作名称 *</label>
-                <input type="text" id="projectName" required>
-            </div>
-            <div class="form-group">
-                <label>机型</label>
-                <input type="text" id="projectModel" placeholder="如 737/MAX">
-            </div>
-            <div class="form-group">
-                <label>章节号</label>
-                <input type="text" id="projectChapter">
-            </div>
-            <div class="modal-actions">
-                <button type="button" id="cancelProjectModal">取消</button>
-                <button type="submit" class="primary" id="saveProject">保存</button>
-            </div>
-        </form>
-    </div>
-</div>
+        </header>
 
-<!-- 先加载外部数据文件 data.js -->
-<script src="./data.js"></script>
-<script>
-(function() {
-    // ---------- 核心修改：从 data.js 加载初始数据 ----------
-    // 依赖外部 data.js 暴露的全局变量 toolLibraryData
-    const INITIAL_DATA = window.toolLibraryData || { projects: [], toolsMap: {} };
-    
-    // ----- 全局变量 -----
-    let projects = [];
-    let toolsMap = {};
-    let selectedProjectName = null;
-    let currentSearch = '';
-    let currentModelFilter = '全部';
-    let editMode = false;
-    const STORAGE_KEY = 'aviation_tools_db_final_v3';
+        <!-- 主内容区域 -->
+        <div class="main-layout">
+            <!-- 项目面板 -->
+            <div class="project-panel">
+                <input type="text" class="search-box" id="projectSearchInput" placeholder="🔍 搜索...">
+                <div class="filter-row" id="modelFilters">
+                    <span class="filter-chip active" data-model="全部">全部</span>
+                    <span class="filter-chip" data-model="737">737</span>
+                    <span class="filter-chip" data-model="737/MAX">737/MAX</span>
+                    <span class="filter-chip" data-model="MAX">MAX</span>
+                    <span class="filter-chip" data-model="787">787</span>
+                </div>
+                <div class="project-list" id="projectList"></div>
+            </div>
 
-    // ---------- 数据加载/保存逻辑 ----------
-    function loadFromStorage() {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-            try {
-                const data = JSON.parse(saved);
-                if (data.projects && data.toolsMap) {
-                    projects = data.projects;
-                    toolsMap = data.toolsMap;
-                    selectedProjectName = data.selectedProjectName && projects.find(p => p.name === data.selectedProjectName) 
-                        ? data.selectedProjectName 
-                        : (projects.length > 0 ? projects[0].name : null);
+            <!-- 工具面板 -->
+            <div class="tools-panel">
+                <div class="tools-header">
+                    <h2 id="selectedProjectTitle">请选择一个项目</h2>
+                </div>
+                <div class="cards-container" id="toolCardsContainer"></div>
+            </div>
+        </div>
+
+        <!-- 底部操作栏 -->
+        <div class="bottom-bar">
+            <div class="bottom-left">
+                <button id="saveToLocalBtn">💾 保存到浏览器</button>
+                <button id="resetDataBtn">🔄 重置</button>
+            </div>
+            <div class="bottom-center">
+                <button id="editModeToggleBtn" class="edit-mode-toggle">✏️ 编辑模式</button>
+                <button id="addToolBtn" disabled>➕ 新增工具</button>
+            </div>
+            <div class="bottom-right">
+                <div class="project-image-icon" id="projectImageIcon" title="项目图片">
+                    <span id="imageIconPlaceholder">🖼️</span>
+                    <img id="projectImagePreview" src="" style="display: none;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片管理模态框 -->
+    <div class="image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <h3>项目图片</h3>
+            <div class="image-preview-large" id="largeImagePreview">
+                <img src="" alt="图片预览" id="largeImagePreviewImg">
+            </div>
+            <div class="image-modal-actions">
+                <button id="uploadImageBtn">📎 上传</button>
+                <button id="removeImageBtn">❌ 移除</button>
+                <button id="closeImageModalBtn">关闭</button>
+                <input type="file" id="imageUploadInput" accept="image/*" style="display: none;">
+            </div>
+        </div>
+    </div>
+
+    <!-- 工具编辑/新增模态框 -->
+    <div class="modal" id="toolModal">
+        <div class="modal-content">
+            <h3 id="toolModalTitle">编辑工具</h3>
+            <form id="toolForm" onsubmit="return false;">
+                <input type="hidden" id="toolIdInput">
+                <div class="form-group">
+                    <label>工具名称 *</label>
+                    <input type="text" id="toolNameInput" required>
+                </div>
+                <div class="form-group">
+                    <label>类型</label>
+                    <select id="toolTypeSelect">
+                        <option value="基础工具">基础工具</option>
+                        <option value="化工品">化工品</option>
+                        <option value="专用工具">专用工具</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>规格/件号</label>
+                    <input type="text" id="toolSpecInput" placeholder="例如 5/16 或 M1B">
+                </div>
+                <div class="form-group">
+                    <label>数量</label>
+                    <input type="text" id="toolQtyInput" value="1">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="cancelToolModalBtn">取消</button>
+                    <button type="submit" class="primary" id="saveToolBtn">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 项目新增/编辑模态框 -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <h3 id="projectModalTitle">新增项目</h3>
+            <form id="projectForm" onsubmit="return false;">
+                <div class="form-group">
+                    <label>工作名称 *</label>
+                    <input type="text" id="projectNameInput" required>
+                </div>
+                <div class="form-group">
+                    <label>机型</label>
+                    <input type="text" id="projectModelInput" placeholder="如 737/MAX">
+                </div>
+                <div class="form-group">
+                    <label>章节号</label>
+                    <input type="text" id="projectChapterInput">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="cancelProjectModalBtn">取消</button>
+                    <button type="submit" class="primary" id="saveProjectBtn">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 外部数据文件 -->
+    <script src="./data.js"></script>
+
+    <script>
+        // 严格模式
+        'use strict';
+
+        // 工具库应用主类
+        class AviationToolLibrary {
+            constructor() {
+                // 常量定义
+                this.STORAGE_KEY = 'aviation_tools_db_final_v3';
+                this.TOOL_CATEGORIES = ['基础工具', '化工品', '专用工具'];
+                
+                // 状态管理
+                this.state = {
+                    projects: [],
+                    toolsMap: {},
+                    selectedProjectName: null,
+                    searchKeyword: '',
+                    modelFilter: '全部',
+                    isEditMode: false
+                };
+
+                // 初始数据（从data.js加载）
+                this.initialData = window.toolLibraryData || { projects: [], toolsMap: {} };
+
+                // DOM元素缓存
+                this.elements = {
+                    // 核心容器
+                    projectList: document.getElementById('projectList'),
+                    toolCardsContainer: document.getElementById('toolCardsContainer'),
+                    selectedProjectTitle: document.getElementById('selectedProjectTitle'),
+                    
+                    // 按钮
+                    addProjectBtn: document.getElementById('addProjectBtn'),
+                    exportJsonBtn: document.getElementById('exportJsonBtn'),
+                    exportDataJsBtn: document.getElementById('exportDataJsBtn'),
+                    saveToLocalBtn: document.getElementById('saveToLocalBtn'),
+                    resetDataBtn: document.getElementById('resetDataBtn'),
+                    editModeToggleBtn: document.getElementById('editModeToggleBtn'),
+                    addToolBtn: document.getElementById('addToolBtn'),
+                    
+                    // 搜索和过滤
+                    projectSearchInput: document.getElementById('projectSearchInput'),
+                    modelFilters: document.getElementById('modelFilters'),
+                    
+                    // 图片相关
+                    projectImageIcon: document.getElementById('projectImageIcon'),
+                    imageIconPlaceholder: document.getElementById('imageIconPlaceholder'),
+                    projectImagePreview: document.getElementById('projectImagePreview'),
+                    imageModal: document.getElementById('imageModal'),
+                    largeImagePreviewImg: document.getElementById('largeImagePreviewImg'),
+                    uploadImageBtn: document.getElementById('uploadImageBtn'),
+                    removeImageBtn: document.getElementById('removeImageBtn'),
+                    closeImageModalBtn: document.getElementById('closeImageModalBtn'),
+                    imageUploadInput: document.getElementById('imageUploadInput'),
+                    
+                    // 工具模态框
+                    toolModal: document.getElementById('toolModal'),
+                    toolModalTitle: document.getElementById('toolModalTitle'),
+                    toolForm: document.getElementById('toolForm'),
+                    toolIdInput: document.getElementById('toolIdInput'),
+                    toolNameInput: document.getElementById('toolNameInput'),
+                    toolTypeSelect: document.getElementById('toolTypeSelect'),
+                    toolSpecInput: document.getElementById('toolSpecInput'),
+                    toolQtyInput: document.getElementById('toolQtyInput'),
+                    cancelToolModalBtn: document.getElementById('cancelToolModalBtn'),
+                    saveToolBtn: document.getElementById('saveToolBtn'),
+                    
+                    // 项目模态框
+                    projectModal: document.getElementById('projectModal'),
+                    projectModalTitle: document.getElementById('projectModalTitle'),
+                    projectForm: document.getElementById('projectForm'),
+                    projectNameInput: document.getElementById('projectNameInput'),
+                    projectModelInput: document.getElementById('projectModelInput'),
+                    projectChapterInput: document.getElementById('projectChapterInput'),
+                    cancelProjectModalBtn: document.getElementById('cancelProjectModalBtn'),
+                    saveProjectBtn: document.getElementById('saveProjectBtn'),
+                    
+                    // 导入导出
+                    importFileInput: document.getElementById('importFile')
+                };
+
+                // 初始化
+                this.init();
+            }
+
+            /**
+             * 初始化应用
+             */
+            init() {
+                // 加载数据
+                this.loadData();
+                
+                // 绑定事件监听
+                this.bindEvents();
+                
+                // 渲染初始界面
+                this.renderProjectList();
+                this.renderToolCards();
+                this.updateProjectImageIcon();
+                
+                // 更新按钮状态
+                this.updateAddToolBtnStatus();
+            }
+
+            /**
+             * 加载数据（优先从本地存储，无则从初始数据）
+             */
+            loadData() {
+                try {
+                    const savedData = localStorage.getItem(this.STORAGE_KEY);
+                    if (savedData) {
+                        const parsedData = JSON.parse(savedData);
+                        if (parsedData.projects && parsedData.toolsMap) {
+                            this.state.projects = parsedData.projects;
+                            this.state.toolsMap = parsedData.toolsMap;
+                            this.state.selectedProjectName = this.getValidProjectName(parsedData.selectedProjectName);
+                            return;
+                        }
+                    }
+                } catch (error) {
+                    console.error('加载本地存储数据失败:', error);
+                }
+
+                // 本地存储无有效数据，使用初始数据
+                this.state.projects = this.initialData.projects || [];
+                this.state.toolsMap = this.initialData.toolsMap || {};
+                this.state.selectedProjectName = this.getValidProjectName();
+            }
+
+            /**
+             * 验证项目名称是否有效
+             * @param {string} projectName - 待验证的项目名称
+             * @returns {string|null} 有效项目名称或null
+             */
+            getValidProjectName(projectName = null) {
+                if (projectName && this.state.projects.some(p => p.name === projectName)) {
+                    return projectName;
+                }
+                return this.state.projects.length > 0 ? this.state.projects[0].name : null;
+            }
+
+            /**
+             * 保存数据到本地存储
+             */
+            saveData() {
+                try {
+                    const saveData = {
+                        projects: this.state.projects,
+                        toolsMap: this.state.toolsMap,
+                        selectedProjectName: this.state.selectedProjectName
+                    };
+                    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(saveData));
+                } catch (error) {
+                    console.error('保存数据失败:', error);
+                    alert('保存失败，请检查浏览器存储权限');
+                }
+            }
+
+            /**
+             * 重置数据为初始状态
+             */
+            resetData() {
+                if (!confirm('重置将丢失所有修改，恢复为 data.js 中的初始数据，确定吗？')) {
                     return;
                 }
-            } catch (e) {}
-        }
-        // 本地存储无数据时，从 data.js 加载初始数据
-        projects = INITIAL_DATA.projects || [];
-        toolsMap = INITIAL_DATA.toolsMap || {};
-        selectedProjectName = projects.length > 0 ? projects[0].name : null;
-    }
 
-    function saveToStorage() {
-        const data = { projects, toolsMap, selectedProjectName };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    }
-
-    // 新增：导出最新数据为 data.js 文件（用于同步到GitHub）
-    function exportDataJs() {
-        const dataContent = `const toolLibraryData = ${JSON.stringify({ projects, toolsMap }, null, 2)};`;
-        const blob = new Blob([dataContent], { type: 'application/javascript' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'data.js';
-        a.click();
-        URL.revokeObjectURL(url);
-        alert('✅ 已导出最新 data.js 文件，可直接替换原有文件！');
-    }
-
-    function resetToOriginal() {
-        // 重置为 data.js 中的初始数据
-        projects = INITIAL_DATA.projects || [];
-        toolsMap = INITIAL_DATA.toolsMap || {};
-        selectedProjectName = projects.length > 0 ? projects[0].name : null;
-        editMode = false;
-        document.getElementById('editModeToggle').classList.remove('active');
-        renderProjectList();
-        renderToolCards(selectedProjectName);
-        updateImageIcon();
-        saveToStorage();
-    }
-
-    // ---------- 原有核心逻辑（无修改） ----------
-    function toggleEditMode() {
-        editMode = !editMode;
-        const btn = document.getElementById('editModeToggle');
-        if (editMode) {
-            btn.classList.add('active');
-            btn.innerText = '✏️ 编辑模式 (开启)';
-        } else {
-            btn.classList.remove('active');
-            btn.innerText = '✏️ 编辑模式';
-        }
-        if (selectedProjectName) {
-            renderToolCards(selectedProjectName);
-        }
-    }
-
-    function renderProjectList() {
-        const filtered = projects.filter(p => {
-            const matchSearch = currentSearch === '' || p.name.toLowerCase().includes(currentSearch.toLowerCase());
-            const matchModel = currentModelFilter === '全部' || p.model === currentModelFilter;
-            return matchSearch && matchModel;
-        });
-        const container = document.getElementById('projectList');
-        container.innerHTML = filtered.map(p => {
-            const selectedClass = (selectedProjectName === p.name) ? 'selected' : '';
-            return `<div class="project-item ${selectedClass}" data-workname="${p.name}">
-                <div class="project-name">${p.name}</div>
-                <span class="project-model">${p.model || '—'}</span>
-            </div>`;
-        }).join('');
-        container.querySelectorAll('.project-item').forEach(el => {
-            el.addEventListener('click', () => {
-                const wname = el.dataset.workname;
-                if (wname) {
-                    selectedProjectName = wname;
-                    renderProjectList();
-                    renderToolCards(wname);
-                    updateImageIcon();
-                    document.getElementById('addToolBtn').disabled = false;
-                    document.getElementById('selectedProjectName').innerText = wname;
-                    saveToStorage();
-                }
-            });
-        });
-    }
-
-    function updateImageIcon() {
-        const icon = document.getElementById('iconImg');
-        const placeholder = document.getElementById('iconPlaceholder');
-        const project = projects.find(p => p.name === selectedProjectName);
-        if (project && project.image) {
-            icon.src = project.image;
-            icon.style.display = 'block';
-            placeholder.style.display = 'none';
-        } else {
-            icon.style.display = 'none';
-            placeholder.style.display = 'block';
-        }
-    }
-
-    // 图片模态框逻辑（无修改）
-    const imageModal = document.getElementById('imageModal');
-    const largeImg = document.getElementById('largeImg');
-    const imageUpload = document.getElementById('imageUpload');
-    document.getElementById('imageIcon').addEventListener('click', () => {
-        if (!selectedProjectName) {
-            alert('请先选择一个项目');
-            return;
-        }
-        const project = projects.find(p => p.name === selectedProjectName);
-        if (project && project.image) {
-            largeImg.src = project.image;
-        } else {
-            largeImg.src = '';
-        }
-        imageModal.classList.add('active');
-    });
-    document.getElementById('closeImageModal').addEventListener('click', () => {
-        imageModal.classList.remove('active');
-    });
-    document.getElementById('uploadImageBtn').addEventListener('click', () => {
-        imageUpload.click();
-    });
-    imageUpload.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (!file || !selectedProjectName) return;
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-            const base64 = ev.target.result;
-            const project = projects.find(p => p.name === selectedProjectName);
-            if (project) {
-                project.image = base64;
-                updateImageIcon();
-                largeImg.src = base64;
-                saveToStorage();
+                this.state.projects = this.initialData.projects || [];
+                this.state.toolsMap = this.initialData.toolsMap || {};
+                this.state.selectedProjectName = this.getValidProjectName();
+                this.state.isEditMode = false;
+                
+                // 更新UI状态
+                this.elements.editModeToggleBtn.classList.remove('active');
+                this.elements.editModeToggleBtn.textContent = '✏️ 编辑模式';
+                
+                // 重新渲染
+                this.renderProjectList();
+                this.renderToolCards();
+                this.updateProjectImageIcon();
+                this.saveData();
             }
-        };
-        reader.readAsDataURL(file);
-    });
-    document.getElementById('removeImageBtn').addEventListener('click', () => {
-        const project = projects.find(p => p.name === selectedProjectName);
-        if (project) {
-            project.image = '';
-            updateImageIcon();
-            largeImg.src = '';
-            saveToStorage();
-        }
-    });
-    imageModal.addEventListener('click', (e) => {
-        if (e.target === imageModal) imageModal.classList.remove('active');
-    });
 
-    // 渲染工具卡片（无修改）
-    function renderToolCards(workName) {
-        const cardsDiv = document.getElementById('toolCards');
-        if (!workName) {
-            cardsDiv.innerHTML = `<div style="flex:1; text-align:center; color:#999; padding:30px 10px;">请选择一个项目</div>`;
-            return;
-        }
-        const tools = toolsMap[workName];
-        if (!tools || tools.length === 0) {
-            cardsDiv.innerHTML = `<div style="flex:1; text-align:center; color:#999; padding:30px 10px;">暂无工具，请点击“新增工具”添加</div>`;
-            return;
-        }
-        const grouped = { '基础工具': [], '化工品': [], '专用工具': [] };
-        tools.forEach(t => {
-            if (t.type === '基础工具') grouped['基础工具'].push(t);
-            else if (t.type === '化工品') grouped['化工品'].push(t);
-            else if (t.type === '专用工具') grouped['专用工具'].push(t);
-            else grouped['专用工具'].push(t);
-        });
-        const editClass = editMode ? 'edit-mode-active' : '';
-        cardsDiv.innerHTML = ['基础工具', '化工品', '专用工具'].map(cat => {
-            const list = grouped[cat];
-            if (list.length === 0) return '';
-            return `<div class="tool-card">
-                <div class="card-header">${cat} <span>${list.length}</span></div>
-                <div class="tool-list ${editClass}">
-                    ${list.map(t => {
-                        const displayName = t.name + (t.spec ? ` (${t.spec})` : '') + (t.pn ? ` [${t.pn}]` : '');
-                        return `<div class="tool-row" data-toolid="${t.id}">
-                            <div class="tool-info">
-                                <div class="tool-name">${displayName}</div>
-                                <div class="tool-spec"></div>
+            /**
+             * 绑定所有事件监听
+             */
+            bindEvents() {
+                // 项目相关事件
+                this.bindProjectEvents();
+                
+                // 工具相关事件
+                this.bindToolEvents();
+                
+                // 图片相关事件
+                this.bindImageEvents();
+                
+                // 搜索过滤事件
+                this.bindSearchFilterEvents();
+                
+                // 导入导出事件
+                this.bindImportExportEvents();
+                
+                // 编辑模式切换
+                this.bindEditModeEvents();
+                
+                // 其他操作事件
+                this.bindOtherEvents();
+            }
+
+            /**
+             * 绑定项目相关事件
+             */
+            bindProjectEvents() {
+                // 新增项目按钮
+                this.elements.addProjectBtn.addEventListener('click', () => this.openProjectModal());
+                
+                // 项目表单提交
+                this.elements.projectForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.saveProject();
+                });
+                
+                // 取消项目模态框
+                this.elements.cancelProjectModalBtn.addEventListener('click', () => this.closeProjectModal());
+                
+                // 点击模态框外部关闭
+                this.elements.projectModal.addEventListener('click', (e) => {
+                    if (e.target === this.elements.projectModal) this.closeProjectModal();
+                });
+                
+                // 项目列表点击事件（委托）
+                this.elements.projectList.addEventListener('click', (e) => {
+                    const projectItem = e.target.closest('.project-item');
+                    if (projectItem) {
+                        const projectName = projectItem.dataset.workname;
+                        this.selectProject(projectName);
+                    }
+                });
+            }
+
+            /**
+             * 绑定工具相关事件
+             */
+            bindToolEvents() {
+                // 新增工具按钮
+                this.elements.addToolBtn.addEventListener('click', () => {
+                    if (!this.state.selectedProjectName) {
+                        alert('请先选择一个项目');
+                        return;
+                    }
+                    this.openToolModal();
+                });
+                
+                // 工具表单提交
+                this.elements.toolForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.saveTool();
+                });
+                
+                // 取消工具模态框
+                this.elements.cancelToolModalBtn.addEventListener('click', () => this.closeToolModal());
+                
+                // 点击模态框外部关闭
+                this.elements.toolModal.addEventListener('click', (e) => {
+                    if (e.target === this.elements.toolModal) this.closeToolModal();
+                });
+                
+                // 工具卡片事件委托（编辑/删除）
+                this.elements.toolCardsContainer.addEventListener('click', (e) => {
+                    // 编辑工具
+                    if (e.target.classList.contains('edit-tool')) {
+                        const toolRow = e.target.closest('.tool-row');
+                        const toolId = toolRow?.dataset.toolid;
+                        if (toolId && this.state.selectedProjectName) {
+                            const tool = this.state.toolsMap[this.state.selectedProjectName].find(t => t.id === toolId);
+                            if (tool) this.openToolModal(tool);
+                        }
+                        e.stopPropagation();
+                    }
+                    
+                    // 删除工具
+                    if (e.target.classList.contains('delete-tool')) {
+                        const toolRow = e.target.closest('.tool-row');
+                        const toolId = toolRow?.dataset.toolid;
+                        if (toolId && this.state.selectedProjectName) {
+                            this.deleteTool(toolId);
+                            e.stopPropagation();
+                        }
+                    }
+                });
+            }
+
+            /**
+             * 绑定图片相关事件
+             */
+            bindImageEvents() {
+                // 打开图片模态框
+                this.elements.projectImageIcon.addEventListener('click', () => {
+                    if (!this.state.selectedProjectName) {
+                        alert('请先选择一个项目');
+                        return;
+                    }
+                    this.openImageModal();
+                });
+                
+                // 关闭图片模态框
+                this.elements.closeImageModalBtn.addEventListener('click', () => {
+                    this.closeImageModal();
+                });
+                
+                // 点击模态框外部关闭
+                this.elements.imageModal.addEventListener('click', (e) => {
+                    if (e.target === this.elements.imageModal) this.closeImageModal();
+                });
+                
+                // 上传图片
+                this.elements.uploadImageBtn.addEventListener('click', () => {
+                    this.elements.imageUploadInput.click();
+                });
+                
+                // 图片选择变化
+                this.elements.imageUploadInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (!file || !this.state.selectedProjectName) return;
+                    this.uploadProjectImage(file);
+                });
+                
+                // 移除图片
+                this.elements.removeImageBtn.addEventListener('click', () => {
+                    this.removeProjectImage();
+                });
+            }
+
+            /**
+             * 绑定搜索过滤事件
+             */
+            bindSearchFilterEvents() {
+                // 项目搜索
+                this.elements.projectSearchInput.addEventListener('input', (e) => {
+                    this.state.searchKeyword = e.target.value;
+                    this.renderProjectList();
+                });
+                
+                // 机型过滤
+                document.querySelectorAll('.filter-chip').forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                        chip.classList.add('active');
+                        this.state.modelFilter = chip.dataset.model;
+                        this.renderProjectList();
+                    });
+                });
+            }
+
+            /**
+             * 绑定导入导出事件
+             */
+            bindImportExportEvents() {
+                // 导出JSON
+                this.elements.exportJsonBtn.addEventListener('click', () => {
+                    this.exportJson();
+                });
+                
+                // 导出data.js
+                this.elements.exportDataJsBtn.addEventListener('click', () => {
+                    this.exportDataJs();
+                });
+                
+                // 导入JSON
+                this.elements.importFileInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    this.importJson(file);
+                    e.target.value = ''; // 重置输入
+                });
+            }
+
+            /**
+             * 绑定编辑模式事件
+             */
+            bindEditModeEvents() {
+                this.elements.editModeToggleBtn.addEventListener('click', () => {
+                    this.toggleEditMode();
+                });
+            }
+
+            /**
+             * 绑定其他操作事件
+             */
+            bindOtherEvents() {
+                // 保存到本地
+                this.elements.saveToLocalBtn.addEventListener('click', () => {
+                    this.saveData();
+                    alert('已保存到浏览器本地存储！');
+                });
+                
+                // 重置数据
+                this.elements.resetDataBtn.addEventListener('click', () => {
+                    this.resetData();
+                });
+            }
+
+            /**
+             * 切换编辑模式
+             */
+            toggleEditMode() {
+                this.state.isEditMode = !this.state.isEditMode;
+                const btn = this.elements.editModeToggleBtn;
+                
+                if (this.state.isEditMode) {
+                    btn.classList.add('active');
+                    btn.textContent = '✏️ 编辑模式 (开启)';
+                } else {
+                    btn.classList.remove('active');
+                    btn.textContent = '✏️ 编辑模式';
+                }
+                
+                if (this.state.selectedProjectName) {
+                    this.renderToolCards();
+                }
+            }
+
+            /**
+             * 选择项目
+             * @param {string} projectName - 项目名称
+             */
+            selectProject(projectName) {
+                this.state.selectedProjectName = projectName;
+                
+                // 更新UI
+                this.renderProjectList();
+                this.renderToolCards();
+                this.updateProjectImageIcon();
+                this.updateAddToolBtnStatus();
+                this.elements.selectedProjectTitle.textContent = projectName;
+                
+                // 保存状态
+                this.saveData();
+            }
+
+            /**
+             * 渲染项目列表
+             */
+            renderProjectList() {
+                // 过滤项目
+                const filteredProjects = this.state.projects.filter(project => {
+                    const matchesSearch = this.state.searchKeyword === '' || 
+                        project.name.toLowerCase().includes(this.state.searchKeyword.toLowerCase());
+                    const matchesModel = this.state.modelFilter === '全部' || 
+                        project.model === this.state.modelFilter;
+                    return matchesSearch && matchesModel;
+                });
+
+                // 渲染项目列表
+                this.elements.projectList.innerHTML = filteredProjects.map(project => {
+                    const isSelected = this.state.selectedProjectName === project.name;
+                    const selectedClass = isSelected ? 'selected' : '';
+                    
+                    return `
+                        <div class="project-item ${selectedClass}" data-workname="${project.name}">
+                            <div class="project-name">${project.name}</div>
+                            <span class="project-model">${project.model || '—'}</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            /**
+             * 渲染工具卡片
+             */
+            renderToolCards() {
+                const projectName = this.state.selectedProjectName;
+                const container = this.elements.toolCardsContainer;
+
+                // 未选择项目
+                if (!projectName) {
+                    container.innerHTML = `<div style="flex:1; text-align:center; color:#999; padding:30px 10px;">请选择一个项目</div>`;
+                    return;
+                }
+
+                // 获取项目工具
+                const tools = this.state.toolsMap[projectName] || [];
+
+                // 无工具
+                if (tools.length === 0) {
+                    container.innerHTML = `<div style="flex:1; text-align:center; color:#999; padding:30px 10px;">暂无工具，请点击“新增工具”添加</div>`;
+                    return;
+                }
+
+                // 按类别分组
+                const groupedTools = this.groupToolsByCategory(tools);
+                
+                // 编辑模式类名
+                const editModeClass = this.state.isEditMode ? 'edit-mode-active' : '';
+
+                // 渲染工具卡片
+                container.innerHTML = this.TOOL_CATEGORIES.map(category => {
+                    const categoryTools = groupedTools[category];
+                    if (categoryTools.length === 0) return '';
+
+                    return `
+                        <div class="tool-card">
+                            <div class="card-header">
+                                ${category} <span>${categoryTools.length}</span>
                             </div>
-                            <span class="tool-qty">${t.qty}</span>
-                            <div class="tool-actions">
-                                <button class="edit-tool" title="编辑">✏️</button>
-                                <button class="delete-tool" title="删除">🗑️</button>
+                            <div class="tool-list ${editModeClass}">
+                                ${categoryTools.map(tool => this.renderToolRow(tool)).join('')}
                             </div>
-                        </div>`;
-                    }).join('')}
-                </div>
-            </div>`;
-        }).join('');
-        cardsDiv.querySelectorAll('.edit-tool').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const row = btn.closest('.tool-row');
-                const toolId = row?.dataset.toolid;
-                if (toolId && selectedProjectName) {
-                    const tool = toolsMap[selectedProjectName].find(t => t.id === toolId);
-                    if (tool) openToolModal(tool);
-                }
-            });
-        });
-        cardsDiv.querySelectorAll('.delete-tool').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const row = btn.closest('.tool-row');
-                const toolId = row?.dataset.toolid;
-                if (toolId && selectedProjectName) {
-                    toolsMap[selectedProjectName] = toolsMap[selectedProjectName].filter(t => t.id !== toolId);
-                    renderToolCards(selectedProjectName);
-                    saveToStorage();
-                }
-            });
-        });
-    }
-
-    // 工具模态框逻辑（无修改）
-    const toolModal = document.getElementById('toolModal');
-    const toolForm = document.getElementById('toolForm');
-    const modalTitle = document.getElementById('modalTitle');
-    const toolIdField = document.getElementById('toolId');
-    const toolNameInput = document.getElementById('toolName');
-    const toolTypeSelect = document.getElementById('toolType');
-    const toolSpecInput = document.getElementById('toolSpec');
-    const toolQtyInput = document.getElementById('toolQty');
-    function openToolModal(tool = null) {
-        modalTitle.innerText = tool ? '编辑工具' : '新增工具';
-        if (tool) {
-            toolIdField.value = tool.id;
-            toolNameInput.value = tool.name || '';
-            toolTypeSelect.value = tool.type || '基础工具';
-            toolSpecInput.value = tool.spec || '';
-            toolQtyInput.value = tool.qty || '1';
-        } else {
-            toolIdField.value = '';
-            toolNameInput.value = '';
-            toolTypeSelect.value = '基础工具';
-            toolSpecInput.value = '';
-            toolQtyInput.value = '1';
-        }
-        toolModal.classList.add('active');
-    }
-    function closeToolModal() {
-        toolModal.classList.remove('active');
-    }
-    toolForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (!selectedProjectName) {
-            alert('请先选择一个项目');
-            closeToolModal();
-            return;
-        }
-        const id = toolIdField.value;
-        const name = toolNameInput.value.trim();
-        if (!name) {
-            alert('工具名称不能为空');
-            return;
-        }
-        const type = toolTypeSelect.value;
-        const spec = toolSpecInput.value.trim();
-        const qty = toolQtyInput.value.trim() || '1';
-        if (id) {
-            const tool = toolsMap[selectedProjectName].find(t => t.id === id);
-            if (tool) {
-                tool.name = name;
-                tool.type = type;
-                tool.spec = spec;
-                tool.qty = qty;
+                        </div>
+                    `;
+                }).join('');
             }
-        } else {
-            const newId = 't_' + Date.now() + '_' + Math.random().toString(36).substr(2, 8);
-            const newTool = {
-                id: newId,
-                name: name,
-                type: type,
-                spec: spec,
-                pn: '',
-                qty: qty,
-                fullInfo: ''
-            };
-            if (!toolsMap[selectedProjectName]) toolsMap[selectedProjectName] = [];
-            toolsMap[selectedProjectName].push(newTool);
-        }
-        renderToolCards(selectedProjectName);
-        saveToStorage();
-        closeToolModal();
-    });
-    document.getElementById('cancelModal').addEventListener('click', closeToolModal);
-    toolModal.addEventListener('click', (e) => {
-        if (e.target === toolModal) closeToolModal();
-    });
 
-    // 项目模态框逻辑（无修改）
-    const projectModal = document.getElementById('projectModal');
-    const projectForm = document.getElementById('projectForm');
-    const projectNameInput = document.getElementById('projectName');
-    const projectModelInput = document.getElementById('projectModel');
-    const projectChapterInput = document.getElementById('projectChapter');
-    function openProjectModal() {
-        projectNameInput.value = '';
-        projectModelInput.value = '';
-        projectChapterInput.value = '';
-        projectModal.classList.add('active');
-    }
-    function closeProjectModal() {
-        projectModal.classList.remove('active');
-    }
-    projectForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = projectNameInput.value.trim();
-        if (!name) {
-            alert('工作名称不能为空');
-            return;
-        }
-        if (projects.find(p => p.name === name)) {
-            alert('该项目已存在，请使用其他名称');
-            return;
-        }
-        const model = projectModelInput.value.trim();
-        const chapter = projectChapterInput.value.trim();
-        const newProject = { name, model, chapter, type: '', image: '' };
-        projects.push(newProject);
-        toolsMap[name] = [];
-        saveToStorage();
-        renderProjectList();
-        closeProjectModal();
-    });
-    document.getElementById('cancelProjectModal').addEventListener('click', closeProjectModal);
-    document.getElementById('addProjectBtn').addEventListener('click', openProjectModal);
-    projectModal.addEventListener('click', (e) => {
-        if (e.target === projectModal) closeProjectModal();
-    });
+            /**
+             * 按类别分组工具
+             * @param {Array} tools - 工具列表
+             * @returns {Object} 分组后的工具
+             */
+            groupToolsByCategory(tools) {
+                const grouped = {
+                    '基础工具': [],
+                    '化工品': [],
+                    '专用工具': []
+                };
 
-    // 搜索和过滤逻辑（无修改）
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-        currentSearch = e.target.value;
-        renderProjectList();
-    });
-    document.querySelectorAll('.filter-chip').forEach(chip => {
-        chip.addEventListener('click', () => {
-            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            currentModelFilter = chip.dataset.model;
-            renderProjectList();
-        });
-    });
+                tools.forEach(tool => {
+                    if (grouped.hasOwnProperty(tool.type)) {
+                        grouped[tool.type].push(tool);
+                    } else {
+                        grouped['专用工具'].push(tool);
+                    }
+                });
 
-    // 导出/导入逻辑（无修改）
-    document.getElementById('exportBtn').addEventListener('click', () => {
-        const data = { projects, toolsMap };
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `tools_backup_${new Date().toISOString().slice(0,10)}.json`;
-        a.click();
-        URL.revokeObjectURL(url);
-    });
-    document.getElementById('importFile').addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-            try {
-                const data = JSON.parse(ev.target.result);
-                if (data.projects && data.toolsMap) {
-                    projects = data.projects;
-                    toolsMap = data.toolsMap;
-                    selectedProjectName = data.selectedProjectName && projects.find(p => p.name === data.selectedProjectName) 
-                        ? data.selectedProjectName 
-                        : (projects.length > 0 ? projects[0].name : null);
-                    editMode = false;
-                    document.getElementById('editModeToggle').classList.remove('active');
-                    renderProjectList();
-                    renderToolCards(selectedProjectName);
-                    updateImageIcon();
-                    saveToStorage();
-                    alert('导入成功');
-                } else throw new Error();
-            } catch {
-                alert('导入失败，无效的JSON格式');
+                return grouped;
             }
-        };
-        reader.readAsText(file);
-        e.target.value = '';
-    });
 
-    // 按钮绑定（新增导出data.js按钮事件）
-    document.getElementById('addToolBtn').addEventListener('click', () => {
-        if (!selectedProjectName) {
-            alert('请先选择一个项目');
-            return;
-        }
-        openToolModal(null);
-    });
-    document.getElementById('editModeToggle').addEventListener('click', toggleEditMode);
-    document.getElementById('saveLocalBtn').addEventListener('click', () => {
-        saveToStorage();
-        alert('已保存到浏览器本地存储！');
-    });
-    document.getElementById('resetBtn').addEventListener('click', () => {
-        if (confirm('重置将丢失所有修改，恢复为 data.js 中的初始数据，确定吗？')) {
-            resetToOriginal();
-        }
-    });
-    document.getElementById('exportDataJsBtn').addEventListener('click', exportDataJs);
+            /**
+             * 渲染单个工具行
+             * @param {Object} tool - 工具对象
+             * @returns {string} HTML字符串
+             */
+            renderToolRow(tool) {
+                const displayName = tool.name + (tool.spec ? ` (${tool.spec})` : '') + (tool.pn ? ` [${tool.pn}]` : '');
+                
+                return `
+                    <div class="tool-row" data-toolid="${tool.id}">
+                        <div class="tool-info">
+                            <div class="tool-name">${displayName}</div>
+                            <div class="tool-spec"></div>
+                        </div>
+                        <span class="tool-qty">${tool.qty}</span>
+                        <div class="tool-actions">
+                            <button class="edit-tool" title="编辑">✏️</button>
+                            <button class="delete-tool" title="删除">🗑️</button>
+                        </div>
+                    </div>
+                `;
+            }
 
-    // 初始化
-    loadFromStorage();
-    renderProjectList();
-    if (selectedProjectName) {
-        renderToolCards(selectedProjectName);
-        updateImageIcon();
-        document.getElementById('addToolBtn').disabled = false;
-        document.getElementById('selectedProjectName').innerText = selectedProjectName;
-    } else {
-        document.getElementById('selectedProjectName').innerText = '请选择一个项目';
-    }
-})();
-</script>
+            /**
+             * 更新项目图片图标
+             */
+            updateProjectImageIcon() {
+                const project = this.state.projects.find(p => p.name === this.state.selectedProjectName);
+                const previewImg = this.elements.projectImagePreview;
+                const placeholder = this.elements.imageIconPlaceholder;
+
+                if (project && project.image) {
+                    previewImg.src = project.image;
+                    previewImg.style.display = 'block';
+                    placeholder.style.display = 'none';
+                } else {
+                    previewImg.style.display = 'none';
+                    placeholder.style.display = 'block';
+                }
+            }
+
+            /**
+             * 打开图片模态框
+             */
+            openImageModal() {
+                const project = this.state.projects.find(p => p.name === this.state.selectedProjectName);
+                
+                if (project && project.image) {
+                    this.elements.largeImagePreviewImg.src = project.image;
+                } else {
+                    this.elements.largeImagePreviewImg.src = '';
+                }
+                
+                this.elements.imageModal.classList.add('active');
+            }
+
+            /**
+             * 关闭图片模态框
+             */
+            closeImageModal() {
+                this.elements.imageModal.classList.remove('active');
+            }
+
+            /**
+             * 上传项目图片
+             * @param {File} file - 图片文件
+             */
+            uploadProjectImage(file) {
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    const base64 = e.target.result;
+                    const project = this.state.projects.find(p => p.name === this.state.selectedProjectName);
+                    
+                    if (project) {
+                        project.image = base64;
+                        this.updateProjectImageIcon();
+                        this.elements.largeImagePreviewImg.src = base64;
+                        this.saveData();
+                    }
+                };
+                
+                reader.readAsDataURL(file);
+            }
+
+            /**
+             * 移除项目图片
+             */
+            removeProjectImage() {
+                const project = this.state.projects.find(p => p.name === this.state.selectedProjectName);
+                
+                if (project) {
+                    project.image = '';
+                    this.updateProjectImageIcon();
+                    this.elements.largeImagePreviewImg.src = '';
+                    this.saveData();
+                }
+            }
+
+            /**
+             * 打开工具模态框
+             * @param {Object|null} tool - 工具对象（null表示新增）
+             */
+            openToolModal(tool = null) {
+                this.elements.toolModalTitle.textContent = tool ? '编辑工具' : '新增工具';
+                
+                // 清空/填充表单
+                if (tool) {
+                    this.elements.toolIdInput.value = tool.id;
+                    this.elements.toolNameInput.value = tool.name || '';
+                    this.elements.toolTypeSelect.value = tool.type || '基础工具';
+                    this.elements.toolSpecInput.value = tool.spec || '';
+                    this.elements.toolQtyInput.value = tool.qty || '1';
+                } else {
+                    this.elements.toolIdInput.value = '';
+                    this.elements.toolNameInput.value = '';
+                    this.elements.toolTypeSelect.value = '基础工具';
+                    this.elements.toolSpecInput.value = '';
+                    this.elements.toolQtyInput.value = '1';
+                }
+                
+                this.elements.toolModal.classList.add('active');
+            }
+
+            /**
+             * 关闭工具模态框
+             */
+            closeToolModal() {
+                this.elements.toolModal.classList.remove('active');
+            }
+
+            /**
+             * 保存工具
+             */
+            saveTool() {
+                const projectName = this.state.selectedProjectName;
+                if (!projectName) {
+                    alert('请先选择一个项目');
+                    this.closeToolModal();
+                    return;
+                }
+
+                // 获取表单数据
+                const toolId = this.elements.toolIdInput.value;
+                const name = this.elements.toolNameInput.value.trim();
+                
+                if (!name) {
+                    alert('工具名称不能为空');
+                    return;
+                }
+
+                const type = this.elements.toolTypeSelect.value;
+                const spec = this.elements.toolSpecInput.value.trim();
+                const qty = this.elements.toolQtyInput.value.trim() || '1';
+
+                // 初始化工具映射
+                if (!this.state.toolsMap[projectName]) {
+                    this.state.toolsMap[projectName] = [];
+                }
+
+                // 编辑现有工具
+                if (toolId) {
+                    const tool = this.state.toolsMap[projectName].find(t => t.id === toolId);
+                    if (tool) {
+                        tool.name = name;
+                        tool.type = type;
+                        tool.spec = spec;
+                        tool.qty = qty;
+                    }
+                } 
+                // 新增工具
+                else {
+                    const newTool = {
+                        id: `t_${Date.now()}_${Math.random().toString(36).substr(2, 8)}`,
+                        name: name,
+                        type: type,
+                        spec: spec,
+                        pn: '',
+                        qty: qty,
+                        fullInfo: ''
+                    };
+                    this.state.toolsMap[projectName].push(newTool);
+                }
+
+                // 更新UI和保存
+                this.renderToolCards();
+                this.saveData();
+                this.closeToolModal();
+            }
+
+            /**
+             * 删除工具
+             * @param {string} toolId - 工具ID
+             */
+            deleteTool(toolId) {
+                const projectName = this.state.selectedProjectName;
+                if (!projectName) return;
+
+                this.state.toolsMap[projectName] = this.state.toolsMap[projectName].filter(
+                    tool => tool.id !== toolId
+                );
+
+                // 更新UI和保存
+                this.renderToolCards();
+                this.saveData();
+            }
+
+            /**
+             * 打开项目模态框
+             */
+            openProjectModal() {
+                // 清空表单
+                this.elements.projectNameInput.value = '';
+                this.elements.projectModelInput.value = '';
+                this.elements.projectChapterInput.value = '';
+                
+                this.elements.projectModal.classList.add('active');
+            }
+
+            /**
+             * 关闭项目模态框
+             */
+            closeProjectModal() {
+                this.elements.projectModal.classList.remove('active');
+            }
+
+            /**
+             * 保存项目
+             */
+            saveProject() {
+                // 获取表单数据
+                const name = this.elements.projectNameInput.value.trim();
+                
+                if (!name) {
+                    alert('工作名称不能为空');
+                    return;
+                }
+
+                // 检查项目是否已存在
+                if (this.state.projects.find(p => p.name === name)) {
+                    alert('该项目已存在，请使用其他名称');
+                    return;
+                }
+
+                // 创建新项目
+                const newProject = {
+                    name: name,
+                    model: this.elements.projectModelInput.value.trim(),
+                    chapter: this.elements.projectChapterInput.value.trim(),
+                    type: '',
+                    image: ''
+                };
+
+                // 添加项目并初始化工具映射
+                this.state.projects.push(newProject);
+                this.state.toolsMap[name] = [];
+
+                // 更新UI和保存
+                this.saveData();
+                this.renderProjectList();
+                this.closeProjectModal();
+            }
+
+            /**
+             * 导出JSON备份
+             */
+            exportJson() {
+                const exportData = {
+                    projects: this.state.projects,
+                    toolsMap: this.state.toolsMap
+                };
+
+                const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `tools_backup_${new Date().toISOString().slice(0, 10)}.json`;
+                a.click();
+                
+                URL.revokeObjectURL(url);
+            }
+
+            /**
+             * 导出data.js文件
+             */
+            exportDataJs() {
+                const dataContent = `const toolLibraryData = ${JSON.stringify({
+                    projects: this.state.projects,
+                    toolsMap: this.state.toolsMap
+                }, null, 2)};`;
+                
+                const blob = new Blob([dataContent], { type: 'application/javascript' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'data.js';
+                a.click();
+                
+                URL.revokeObjectURL(url);
+                alert('✅ 已导出最新 data.js 文件，可直接替换原有文件！');
+            }
+
+            /**
+             * 导入JSON数据
+             * @param {File} file - JSON文件
+             */
+            importJson(file) {
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        
+                        if (importedData.projects && importedData.toolsMap) {
+                            this.state.projects = importedData.projects;
+                            this.state.toolsMap = importedData.toolsMap;
+                            this.state.selectedProjectName = this.getValidProjectName(importedData.selectedProjectName);
+                            this.state.isEditMode = false;
+                            
+                            // 更新UI状态
+                            this.elements.editModeToggleBtn.classList.remove('active');
+                            this.elements.editModeToggleBtn.textContent = '✏️ 编辑模式';
+                            
+                            // 重新渲染
+                            this.renderProjectList();
+                            this.renderToolCards();
+                            this.updateProjectImageIcon();
+                            this.updateAddToolBtnStatus();
+                            
+                            // 保存数据
+                            this.saveData();
+                            
+                            alert('导入成功');
+                        } else {
+                            throw new Error('数据格式不正确');
+                        }
+                    } catch (error) {
+                        console.error('导入失败:', error);
+                        alert('导入失败，无效的JSON格式');
+                    }
+                };
+                
+                reader.readAsText(file);
+            }
+
+            /**
+             * 更新新增工具按钮状态
+             */
+            updateAddToolBtnStatus() {
+                this.elements.addToolBtn.disabled = !this.state.selectedProjectName;
+            }
+        }
+
+        // 页面加载完成后初始化应用
+        document.addEventListener('DOMContentLoaded', () => {
+            new AviationToolLibrary();
+        });
+    </script>
 </body>
 </html>
