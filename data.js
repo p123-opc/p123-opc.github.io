@@ -1,5 +1,4 @@
-// 变量名固定：toolLibraryData，直接上传即可
-const toolLibraryData = {
+var toolLibraryData = {
   "projects": [
     {
       "name": "737航电维修",
